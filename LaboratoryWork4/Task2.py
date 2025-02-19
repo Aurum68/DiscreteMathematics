@@ -1,6 +1,7 @@
 import heapq
 import Task1
 
+text = Task1.text
 Task1.statistics()
 
 # Класс для узлов дерева Хаффмана
@@ -96,18 +97,17 @@ print(average_code_length, encoded_text_size, top_huffman_codes)
 # Процент сжатия:
 # После кодирования Хаффмана размер текста уменьшился на 45.5% по сравнению с исходным 8-битным представлением ASCII.
 
-Task1.Shennon()
-original_size = Task1.uniform_code()
+def Haffman():
+    with open('results_bites.txt', 'a', encoding='utf-8') as f:
+        f.write("Код Хаффмана: " + str(encoded_text_size) + ' бит\n')
+        f.close()
 
-with open('results.txt', 'a', encoding='utf-8') as f:
-    f.write("Код Хаффмана: " + str(encoded_text_size) + ' бит\n')
-    f.close()
+    # Процент сжатия
 
-# Процент сжатия
+    compression_ratio = (1 - encoded_text_size / (sum(char_freq.values()) * 6)) * 100
+    print("Степень сжатия при коде Хаффмана = " + str(compression_ratio))
 
-compression_ratio = (1 - encoded_text_size / original_size) * 100
-
-print(compression_ratio)
-
-if __name__ == '__main__':
-    pass
+    with open('Haffman.txt', 'w', encoding='utf-8') as f:
+        for symbol in text:
+            f.write(str(huffman_codes[symbol]))
+        f.close()

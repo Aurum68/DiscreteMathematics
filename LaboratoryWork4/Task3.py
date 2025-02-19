@@ -57,8 +57,11 @@ for code in coded_text:
         print(bin(code)[2:], end='.')
         result += bin(code)[2:]
 
-with open('results.txt', 'a', encoding='utf-8') as f:
-    f.write("LZW: " + str(len(result)) + ' бит\n')
+def LZW():
+    with open('results_bites.txt', 'a', encoding='utf-8') as f:
+        f.write("LZW: " + str(len(result)) + ' бит\n')
+        f.close()
 
-if __name__ == '__main__':
-    pass
+    with open('LZW.txt', 'w', encoding='utf-8') as f:
+        f.write(result)
+        f.close()

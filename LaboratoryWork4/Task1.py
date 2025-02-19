@@ -37,7 +37,7 @@ def Shennon():
     global text
     shennon_information = -sum([(char_freq[i]/len(text) * math.log2(char_freq[i]/len(text))) for i in char_freq])
 
-    with open('results.txt', 'w', encoding='utf-8') as f:
+    with open('results_bites.txt', 'w', encoding='utf-8') as f:
         f.write("По формуле Шеннона " + str(shennon_information) + ' бит\n')
         f.close()
 
@@ -45,6 +45,6 @@ def Shennon():
 def uniform_code():
     global text, char_freq
     original_size = sum(char_freq.values()) * 6
-    with open('results.txt', 'a', encoding='utf-8') as f:
+    with open('results_bites.txt', 'a', encoding='utf-8') as f:
         f.write("Равномерный код :" + str(original_size) + ' бит\n')
     return original_size
